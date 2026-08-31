@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LABELGUARD - Compliance Checker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>LABELGUARD AI</h1>
+
+    <p class="subtitle">
+        Legal Metrology Packaged Commodity Compliance Checker
+    </p>
+
+    <div class="upload-box">
+
+        <h2>Scan Your Product</h2>
+
+        <p>
+            Upload an image of the product label
+            to check compliance.
+        </p>
+
+        <form action="/check"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="product_image"
+                accept="image/*"
+                required>
+
+            <br><br>
+
+            <button type="submit">
+                CHECK COMPLIANCE
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>LABELGUARD - Compliance Report</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>LABELGUARD</h1>
+
+    <p class="subtitle">
+        Legal Metrology Compliance Report
+    </p>
+
+    <div class="upload-box">
+
+        <h2>Compliance Score</h2>
+
+        <div class="score">
+            {{ score }}%
+        </div>
+
+        {% if score >= 80 %}
+            <h2>🟢 COMPLIANT</h2>
+        {% elif score >= 50 %}
+            <h2>🟡 NEEDS REVIEW</h2>
+        {% else %}
+            <h2>🔴 POTENTIAL VIOLATION</h2>
+        {% endif %}
+
+        <hr>
+
+        <h2>Compliance Checks</h2>
+
+        {% for item, passed in checks.items() %}
+
+            <div class="check">
+
+                {% if passed %}
+
+                    <span>✅</span>
+                    <strong>{{ item }}</strong>
+                    <span>PASS</span>
+
+                {% else %}
+
+                    <span>❌</span>
+                    <strong>{{ item }}</strong>
+                    <span>NOT DETECTED</span>
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+        <hr>
+
+        <h2>OCR Extracted Text</h2>
+
+        <div class="text-box">
+            {{ text }}
+        </div>
+
+        <br>
+
+        <a href="/">
+            ← Check Another Product
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
